@@ -1,0 +1,63 @@
+<mat-card class="sign-up-card">
+
+  <mat-card-header>
+    <mat-card-title>Welcome To ISMA</mat-card-title>
+    <mat-card-subtitle>Create a new account</mat-card-subtitle>
+  </mat-card-header>
+  <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="handleSubmit()">
+
+    <mat-card-content>
+
+      <mat-form-field class="sign-up-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. john@example.com">
+        <mat-error>
+          {{errors['email']}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="sign-up-full-width">
+        <mat-label>Phone Number</mat-label>
+        <input type="phone" matInput formControlName="phone" placeholder="Ex. +241 123 478 90">
+        <mat-error>
+          {{errors['phone']}}
+        </mat-error>
+      </mat-form-field>
+
+      <div formGroupName="matchingPasswords" class="sign-up-full-width passwords-group">
+        <mat-form-field class="sign-up-full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" [errorStateMatcher]="confirmValidParentMatcher"
+            placeholder="Ex. john@example.com">
+          <mat-error>
+            {{errors['password']}}
+            <mat-hint>
+              Minimum eight characters, at least one letter, one number and one special character
+            </mat-hint>
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field class="sign-up-full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword" placeholder="Ex. john@example.com">
+          <mat-error>
+            {{errors['confirmPassword']}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <mat-hint class="mat-small">Already have an account? <a routerLink="../SignIn">Sign In</a></mat-hint>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="signUpForm.invalid" type="submit"
+        class="sign-up-full-width">SIGN UP</button>
+    </mat-card-actions>
+  </form>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

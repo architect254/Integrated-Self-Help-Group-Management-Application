@@ -7,8 +7,8 @@ import {
 } from '@angular/common/http';
 
 import { Observable, switchMap } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
-import { AuthService } from './auth.service';
+import { environment } from '@env/environment.prod';
+import { AuthService } from '@core/auth.service';
 
 
 
