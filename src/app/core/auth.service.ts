@@ -8,9 +8,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import jwt_decode from 'jwt-decode';
 
-import { environment } from '../../environments/environment';
-import { JwtPayload } from '../misc/models/jwt.payload';
-import { AuthhDto } from '../misc/models/auth.dto';
+import { environment } from '@env/environment';
+import { JwtPayload } from '@common/models/jwt.payload';
+import { AuthhDto } from '@common/models/auth.dto';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
