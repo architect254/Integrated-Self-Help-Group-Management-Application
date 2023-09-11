@@ -8,23 +8,30 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ContainerComponent } from './container/container.component';
+import { EntryComponent } from './entry/entry.component';
 
 const materialModules = [
-  MatCardModule,MatInputModule,MatButtonModule,MatDividerModule,MatProgressBarModule
+  MatCardModule,MatInputModule,MatButtonModule,MatDividerModule,MatProgressBarModule,MatIconModule
 ]
 
 const routes: Routes = [
-  { path: 'SignUp', component: SignUpComponent },
-  { path: 'SignIn', component: SignInComponent },
-  { path: '', redirectTo: '/SignUp', pathMatch:'full' },
+  { path: '', component: ContainerComponent, children:[
+    { path: 'SignUp', component: SignUpComponent },
+    { path: 'SignIn', component: SignInComponent },
+    { path: 'Welcome', component: EntryComponent },
+    { path: '', redirectTo: '/Welcome', pathMatch:'full' },
+  ] },
+ 
 ];
 
 @NgModule({
-  declarations: [SignUpComponent, SignInComponent],
+  declarations: [SignUpComponent, SignInComponent, ContainerComponent, EntryComponent],
   imports: [CommonModule, RouterModule.forChild(routes),materialModules,ReactiveFormsModule],
   exports: [RouterModule],
 })
